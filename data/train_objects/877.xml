@@ -1,0 +1,50 @@
+<annotation>
+	<folder>training1</folder>
+	<filename>877.png</filename>
+	<path>C:\Users\Christina\Documents\Uni\MLiS Part 2\Project\object_training\images_training\training1\877.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>320</width>
+		<height>240</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>red light</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>168</xmin>
+			<ymin>14</ymin>
+			<xmax>190</xmax>
+			<ymax>43</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>right</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>198</xmin>
+			<ymin>32</ymin>
+			<xmax>234</xmax>
+			<ymax>52</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>right</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>241</xmin>
+			<ymin>38</ymin>
+			<xmax>276</xmax>
+			<ymax>59</ymax>
+		</bndbox>
+	</object>
+</annotation>

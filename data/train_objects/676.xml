@@ -1,0 +1,26 @@
+<annotation>
+	<folder>training1</folder>
+	<filename>676.png</filename>
+	<path>C:\Users\Christina\Documents\Uni\MLiS Part 2\Project\object_training\images_training\training1\676.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>320</width>
+		<height>240</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tree</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>45</xmin>
+			<ymin>9</ymin>
+			<xmax>137</xmax>
+			<ymax>134</ymax>
+		</bndbox>
+	</object>
+</annotation>
