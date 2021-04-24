@@ -112,4 +112,3 @@ class ObjectsOnRoadProcessor(object):
 def show_image(title, frame, show=_SHOW_IMAGE):
     if show:
         cv2.imshow(title, frame)
-
