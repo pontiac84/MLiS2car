@@ -17,7 +17,6 @@ class ObjectsOnRoadProcessor(object):
 
     def __init__(self,
                  car=None,
-                 speed_limit=1, #should this be 1 or 35? or not included at all?
                  #replace with our files
                  model='/home/pi/DeepPiCar/models/object_detection/data/model_result/road_signs_quantized_edgetpu.tflite',
                  label='/home/pi/DeepPiCar/models/object_detection/data/model_result/road_sign_labels.txt',
@@ -31,8 +30,6 @@ class ObjectsOnRoadProcessor(object):
 
         # initialize car
         self.car = car
-        self.speed_limit = speed_limit
-        self.speed = speed_limit
 
         # initialize TensorFlow models
         with open(label, 'r') as f:
@@ -59,13 +56,15 @@ class ObjectsOnRoadProcessor(object):
         self.time_to_show_prediction = 1.0  # ms
 
 
-        self.traffic_objects = {0: GreenTrafficLight(),
-                                1: Person(),
-                                2: RedTrafficLight(),
-                                3: Box(),
-                                4: Tree(),
-                                5: LeftSign(),
-                                6: RightSign()}
+        self.traffic_objects = {1: Box(),
+                                2: GreenTrafficLight(),
+                                3: Left(),
+                                4: Person1(),
+                                5: Person2(),
+                                6: Person3(),
+                                7: RedTrafficLight(),
+                                8: Right(),
+                                9: Tree()}
 
     def process_objects_on_road(self, frame):
         # Main entry point of the Road Object Handler
