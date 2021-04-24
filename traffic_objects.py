@@ -21,11 +21,21 @@ class GreenTrafficLight(TrafficObject):
     def set_car_state(self, car_state):
         logging.debug('green light: make no changes')
 
-class Person(TrafficObject):
+class Person1(TrafficObject):
     def set_car_state(self, car_state):
         logging.debug('pedestrian: stopping car')
         car_state['speed'] = 0
 
+class Person2(TrafficObject):
+    def set_car_state(self, car_state):
+        logging.debug('pedestrian: stopping car')
+        car_state['speed'] = 0      
+
+class Person3(TrafficObject):
+    def set_car_state(self, car_state):
+        logging.debug('pedestrian: stopping car')
+        car_state['speed'] = 0
+        
 class Box(TrafficObject):
     def set_car_state(self, car_state):
         logging.debug('pedestrian: stopping car')
@@ -40,10 +50,10 @@ class Right(TrafficObject):
     def set_car_state(self, car_state):
         logging.debug('right: car turning right')
         #Should we include angle variable in set_car_state?
-        car_state['angle'] = #90?
+        #car_state['angle'] = #90?
 
 class Left(TrafficObject):
     def set_car_state(self, car_state):
         logging.debug('left: car turning left')
         #Should we include angle variable in set_car_state?
-        car_state['angle'] = #-90?
+        #car_state['angle'] = #-90?
