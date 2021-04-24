@@ -17,18 +17,16 @@ class ObjectsOnRoadProcessor(object):
 
     def __init__(self,
                  car=None,
-                 #replace with our files
-                 model='/home/pi/DeepPiCar/models/object_detection/data/model_result/road_signs_quantized_edgetpu.tflite',
-                 label='/home/pi/DeepPiCar/models/object_detection/data/model_result/road_sign_labels.txt',
-                 width=640,
-                 height=480):
-        # model: This MUST be a tflite model that was specifically compiled for Edge TPU.
-        # https://coral.withgoogle.com/web-compiler/
+                 speed=1
+                 model= ,
+                 label= ,
+                 width=320,
+                 height=240):
         logging.info('Creating a ObjectsOnRoadProcessor...')
         self.width = width
         self.height = height
 
-        # initialize car
+        #initialse car
         self.car = car
 
         # initialize TensorFlow models
@@ -74,6 +72,25 @@ class ObjectsOnRoadProcessor(object):
         logging.debug('Processing objects END..............................')
 
         return final_frame
+    
+    def control_car(self, objects):
+        logging.debug('Control car...')
+        car_state = {"speed": self.speed}
+        if len(objects) == 0:
+            logging.debug('No objects detected, drive normally')
+        for obj in objects:
+            obj_label = self.labels[obj.label_id]
+            processor = self.traffic_objects[obj.label_id]
+            if processor.is_close_by(obj, self.height):
+                processor.set_car_state(car_state)
+            else:
+                logging.debug("[%s] object detected, but it is too far, ignoring. " % obj_label)
+        self.resume_driving(car_state)
+    
+    def resume_driving(self, car_state):
+        old_speed = self.speed
+        self.speed = car_state['speed']
+        logging.debug('Current Speed = %d, New Speed = %d' % (old_speed, self.speed))
 
     def detect_objects(self, frame):
         logging.debug('Detecting objects...')
@@ -109,6 +126,21 @@ class ObjectsOnRoadProcessor(object):
         return objects, frame
 
 
-def show_image(title, frame, show=_SHOW_IMAGE):
-    if show:
+    ############################
+    # Utility Functions
+    ############################
+    def show_image(title, frame, show=_SHOW_IMAGE):
+        if show:
         cv2.imshow(title, frame)
+
+    ############################
+    # Test Functions
+    ############################
+    def test_photo(file):
+        object_processor = ObjectsOnRoadProcessor()
+        frame = cv2.imread(file)
+        combo_image = object_processor.process_objects_on_road(frame)
+        show_image('Detected Objects', combo_image)
+
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
