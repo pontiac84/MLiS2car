@@ -1,0 +1,9 @@
+1 box
+2 green light
+3 left
+4 person1
+5 person2
+6 person3
+7 red light
+8 right
+9 tree
